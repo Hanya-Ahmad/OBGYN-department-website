@@ -1,0 +1,45 @@
+{% extends 'loginbase.html' %}
+
+    {% block loginbody %}
+    <div class="banner-top" style="transform: translate(0px,-450px); ">
+     <div class="agileits_reservation ">
+        <div class="container" style="display:flex; ">
+            <form  method="post">
+                           
+                <div class="cuisine"> 
+                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                    <input type="text" name="Location" placeholder="Enter name" required="">
+                </div>
+                <div class="phone"> 
+                    <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>
+                    <input type="text" name="phone" placeholder="Phone" required=""> 
+                </div>
+                            <div class="email" > 
+                                <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                                <input type="email" name="email" placeholder="Email" required="">
+                            </div>
+                            <div class="pass" > 
+                                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                                <input type="password" name="pass" placeholder="password" required="">
+                            </div> 
+                            <div class="clearfix"> </div>
+                            <div class="agileits_reservation_grid">
+                            <div  class="span1_of_1 book_date" style="margin: 1.8em 0;"> 
+                                <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                                <input class="date" id="datepicker" name="Text" placeholder="Date of birth"  type="text" required="">
+                            </div>
+                           
+                        </div>
+                            <div class="date_btn"> 
+                                <input type="submit" value="Sign up" /> 
+                                
+                            </div> 
+                            
+                               
+                        </form>
+                    </div>
+                </div>
+        </div>
+
+
+        {% endblock loginbody%}

@@ -1,0 +1,34 @@
+{% extends 'loginbase.html' %}
+
+
+    {% block loginbody %}
+    <div class="banner-top" style="transform: translate(0px,-450px); ">
+     <div class="agileits_reservation ">
+        <div class="container" style="display:flex; vertical-align: middle;">
+            <form  method="post">
+                           
+                         
+                            <div class="email" style="width:500px"> 
+                                <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                                <input type="email" name="email" placeholder="Email" required="">
+                            </div>
+                            <div class="pass" style="width:500px"> 
+                                <!-- <span class="glyphicon glyphicon-user" aria-hidden="true"></span> -->
+                                <input type="password" name="pass" placeholder="password" required="">
+                            </div> 
+                            
+                            <div class="date_btn"> 
+                                <input type="submit" value="Sign in" /> 
+                                
+                            </div> 
+                            <div class="date_btn" style="transform: translate(150px, 0px); ">
+                                <input type="button" onClick="location.href='signup.html'"
+                                value='Create an account'>
+                                </div>
+                               
+                        </form>
+                    </div>
+                </div>
+        </div>
+
+        {% endblock loginbody%}
