@@ -1,17 +1,18 @@
-import mysql.connector
+import os.path
+import mysql.connector as mysqlc
 from email import message
 from flask import Flask, render_template, request, session, url_for
-# from numpy import empty
+
 
 app = Flask(__name__)
 app.secret_key = 'secret key'
 
 
-mydb = mysql.connector.connect(
+mydb = mysqlc.connect(
     host="localhost",
     user="root",
-    passwd="sara2001",
-    database="hemodialysis"
+    passwordd="heidi_12345",
+    database="mydb"
 )
 
 mycursor = mydb.cursor(buffered = True)
@@ -21,154 +22,131 @@ def index():
     return render_template("index.html")
 
 
-@app.route('/login&reg')
-def log_reg():
+@app.route('/createaccount')
+def create_account():
     return render_template("signup.html")
 
 
-@app.route('/log')
-def log():
-    return render_template("signin.html")
+@app.route('/login')
+def login():
+    return render_template("login.html")
 
 
-@app.route('/admin')
-def admin():
-    return render_template("admin.html")
+@app.route('/aboutus')
+def info():
+    return render_template("about.html")
 
 
-@app.route('/doctor')
-def doctor():
-    return render_template("doctor.html")
+@app.route('/gallery')
+def gallery():
+    return render_template('gallery.html')
 
 
-@app.route('/dash')
-def dash():
+@app.route('/contactus')
+def contact():
+    return render_template('contact.html')
+
+
+@app.route('/ourservices')
+def ser():
+    return render_template('services.html')
+
+
+@app.route('/dashboard')
+def dashboard():
     return render_template("dashboard.html")
 
 
-@app.route('/doctors')
-def doctors():
-    return render_template("doctors.html")
-
-
-@app.route('/opendoctor')
-def opendoctor(id):
-   mycursor.execute('SELECT * FROM doctor WHERE id = %s', ( id,)) 
+@app.route('/viewdoctor')
+def viewdoctor(doctor_id):
+   mycursor.execute('SELECT * FROM doctor WHERE id = %s', (doctor_id)) 
    myresult = mycursor.fetchall()
    print(myresult)
    return (myresult)
 
 
-@app.route('/login', methods=["GET", "POST"])
-def login():
-    if request.method == 'POST' :
-        #and 'name' in request.form and 'id' in request.form
-        username = request.form['name']
+@app.route('/signup', methods=["Get", "POST"])
+def signup():
+    if request.method == 'POST' and 'name' in request.form and 'id' in request.form:
+        username = request.form['username']
         password = request.form['id']
+        role = "patient"
         isInt = True
-        
         try:
             int(username)
         except ValueError:
             isInt = False
         if isInt:
-                 error_statment = 'You should enter a text not numbers'
-                 return render_template("signin.html",error_statement = error_statment)
-        elif len(password) == 0 or len(username)==0:
-            error_statement = 'Wrong Password or username.'
-            return render_template("signin.html",error_stat = error_statement)
-        else:
-            mycursor.execute('SELECT flag FROM user WHERE passw =%s',(password,))
-            flag = mycursor.fetchone()
-            if flag == ("false",):
-                msg ="You Can't Login. Call Admin for Response"
-                return render_template('signin.html', error=msg)
-            else:
-                mycursor.execute('SELECT * FROM user WHERE name = %s AND passw = %s ', (username,password,))
-                account = mycursor.fetchall()
-                if account :
-                    mycursor.execute('SELECT role from user WHERE name=%s AND passw =%s',(username,password,))
-                    roles= mycursor.fetchone()
-                    if roles == ("patient",):
-                        msg = "You're a patient"
-                        return render_template("signin.html",msg=msg)
-                    # session['loggedIn'] = True
-                    # session['user'] = username   
-                    elif roles ==("doctor",):
-                        
-                        result = mycursor.execute('SELECT id from user WHERE name=%s AND passw =%s',(username,password,))
-                        result = mycursor.fetchone()
-                        data = opendoctor(result[0])
-                        return render_template("opendoctor.html", data=data )
-
-                        # return render_template('doctor.html', name='Welcome {}'.format(username))
-                    # session['loggedIn'] = True
-                    # session['user'] = username
-                    else :
-                        return render_template('admin.html', name='Welcome {}'.format(username))     
-                else:
-                    msg = " You don't have an account."
-                    return render_template('signin.html', error=msg)
-                # session['loggedIn'] = True
-                # session['user'] = username
-                
-                
-
-
-@app.route('/SignUp', methods=["Get", "POST"])
-def SignUp():
-    if request.method == 'POST' and 'name' in request.form and 'id' in request.form:
-        user = request.form['name']
-        passw = request.form['id']
-        role = request.form['role']
-        isInt = True
-        try:
-            int(user)
-        except ValueError:
-            isInt = False
-        if isInt:
-                 error_statment = 'You should enter a text not numbers'
-                 return render_template("signup.html",error_statement = error_statment)
+                 error_statment = 'Your username should contain lettres.'
+                 return render_template("signup.html",error_stat = error_statment)
              
-        elif len(passw) < 8:
-            error_statement = 'Password must be 8 characters'
-            return render_template('signup.html', error=error_statement, username=user, passwd=passw)
+        elif len(password) < 8 :
+            error_statement = 'Your passwordord must contain at least 8 characters'
+            return render_template('signup.html', error=error_statement, user_name=username, pass_word=password)
         else:
-            error_statement = ''
-
-        if error_statement == '':
             mycursor.execute(
-                'SELECT * FROM user WHERE name =%s AND passw =%s AND role=%s', (user, passw, role))
+                'SELECT * FROM user WHERE name =%s', (username,))
             account = mycursor.fetchone()
             if account:
-                error_statement = "You already have an account."
+                error_statement = "An account with this username already exists."
 
             else:
+                error_statement='no_error'
                 if role == "patient":
                     mycursor.execute(
-                        'INSERT INTO user (passw,name,role) VALUES( %s, %s,%s)', (passw, user, role))
+                        'INSERT INTO user (password,name,role) VALUES( %s, %s,%s)', 
+                        (password, username, role))
                     mydb.commit()
 
-                    result = mycursor.execute('SELECT id from user WHERE name=%s AND passw =%s',(user,passw,))
+                    result = mycursor.execute('SELECT id from user WHERE name=%s AND password =%s',(username,password,))
                     result = mycursor.fetchone()
+                    patient_id=result[0]
 
                     mycursor.execute(
-                        'INSERT INTO patient (id,name,passw) VALUES( %s, %s,%s)', (result[0], user, passw))
+                        'INSERT INTO patient (id,name,password) VALUES( %s, %s,%s)', (patient_id, username, password))
                     mydb.commit()
+                    
+            return render_template('signup.html')
+       # else:
+        if error_statement =='no_error':  
+           return render_template('signup.html', user_name=username, passwordd=password)
 
-                    msg = "signup"
-                else:
-                    s = "false"
-                    mycursor.execute(
-                        'INSERT INTO user (passw,name,role,flag) VALUES( %s, %s,%s,%s)', (passw, user, role, s))
-                    mydb.commit()
-                    msg = "signup "
-
-        if error_statement == '':
-            return render_template('signup.html', message=msg)
+@app.route('/login', methods=["GET", "POST"])
+def signin():
+    if request.method == 'POST' :
+        username = request.form['username']
+        passwordord = request.form['passwordord']
+        
+        if len(passwordord) == 0 or len(username)==0:
+            error_statement = 'Invalid passwordord or username. Please re-enter your username and passwordord.'
+            return render_template("signin.html",error_stat = error_statement)
         else:
-            return render_template('signup.html', error=error_statement, username=user, passwd=passw)
+            mycursor.execute('SELECT flag FROM user WHERE password =%s',(passwordord,))
+            flag = mycursor.fetchone()
+            if flag == ("false"):
+                error_statement ="Access denied. Please contact the Admin to resolve the issue."
+                return render_template('signin.html', error_stat=error_statement)
+            else:
+                mycursor.execute('SELECT * FROM user WHERE name = %s AND password = %s ', (username,passwordord,))
+                account = mycursor.fetchall()
+                if account :
+                    mycursor.execute('SELECT role from user WHERE name=%s AND password =%s',(username,passwordord,))
+                    roles= mycursor.fetchone()
+                    if roles == ("patient",):
+                        return render_template("signin.html")
+                    elif roles ==("doctor",):
+                        
+                        result = mycursor.execute('SELECT id from user WHERE name=%s AND password =%s',(username,passwordord,))
+                        result = mycursor.fetchone()
+                        doc_id=result[0]
+                        data = viewdoctor(doc_id)
+                        return render_template("doctortemplatepending.html", data=data )
 
+                    else :
+                        return render_template('admintemplatepending.html')     
+                else:
+                    msg = " There's no such account. Please make sure you enter your correct username and passwordord, or sign up if you don't have an account."
+                    return render_template('signin.html', error=msg)
 
 if __name__ == '__main__':
     app.run(debug=True)
