@@ -39,17 +39,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <span class="icon-bar"></span>
                         </button>
                         <div class="w3_navigation_pos " >
-                            <h1><a href="index.html">OB/GYN</a></h1>
+                            <h1><a href="/">OB/GYN</a></h1>
                         </div>
                     </div>
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
                         <nav>
                             <ul class="nav navbar-nav">
-                                <li class="active"><a href="index.html">Home</a></li>
+                                <li class="active"><a href="/">Home</a></li>
                                 <li><a href="login.html">Log In</a></li>
-                                <li><a href="about.html">About Us</a></li>
-                                <li><a href="gallery.html">Gallery</a></li>
+                                {% block nav %}
+                                {% endblock nav %}
+                    
+                               
                                 <!-- <li class="dropdown">
                                         <a href="#" class="dropdown-toggle" data-hover="Pages" data-toggle="dropdown">Short Codes <b class="caret"></b></a>
                                         <ul class="dropdown-menu">
@@ -57,7 +59,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                             <li><a href="typography.html">Typography</a></li>
                                         </ul>
                                   </li> -->
-                                <li><a href="contact.html">Contact</a></li>
+                                <li><a href="contact.html">Contact Us</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -77,9 +79,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="footer_agile_inner_info_w3l">
                 <div class="col-md-4 footer-left">
                     <h2><a href="index.html">OB/GYN </a></h2>
-                    <p>Lorem ipsum quia dolor
-                    sit amet, consectetur, adipisci velit, sed quia non 
-                    numquam eius modi tempora.</p>
+                    <p>The Obstetrics and Gynecology department website provides an easy booking process.</p>
                     <ul class="social-nav model-3d-0 footer-social w3_agile_social two">
                                                                     <li><a href="#" class="facebook">
                                                                           <div class="front"><i class="fa fa-facebook" aria-hidden="true"></i></div>
@@ -100,11 +100,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <div class="sign-gd">
                             <h4>Information </h4>
                             <ul>
-                                 <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="about.html" >About</a></li>
-                <li><a href="services.html"> Services</a></li>
-                <li><a href="gallery.html">Portfolio</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                                 <li><a href="/" class="active">Home</a></li>
+                <li><a href="http://127.0.0.1:5000/list" >Doctors</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
                                 
                             </ul>
                         </div>
@@ -129,7 +127,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     </div>
                                     <div class="w3-address-right">
                                         <h6>Email Address</h6>
-                                        <p>Email :<a href="mailto:example@email.com"> mail@example.com</a></p>
+                                        <p>Email :<a href="mailto:cmp2242team18@eng-cu.edu.eg"> cmp2242team18@eng-cu.edu.eg</a></p>
                                     </div>
                                     <div class="clearfix"> </div>
                                 </div>
@@ -139,7 +137,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     </div>
                                     <div class="w3-address-right">
                                         <h6>Location</h6>
-                                        <p>Broome St, NY 10002,California, USA. 
+                                        <p>Cairo University Rd, Giza District, Giza Governorate.
                                         
                                         </p>
                                     </div>
@@ -152,7 +150,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 
                 <div class="clearfix"></div>
                     
-                <p class="copy-right">&copy;2018 MediBulk. All rights reserved | Design by <a href="http://w3layouts.com/">W3layouts</a></p>
+                <p class="copy-right">&copy;SBME CMP2242-01 Team 18</p>
             </div>
         </div>
         </div>

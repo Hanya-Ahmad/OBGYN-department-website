@@ -1,0 +1,27 @@
+{% extends 'doctorslist.html' %}
+{% block style %}
+<style>
+#edit{
+background-color: #0392ce;
+color:white;
+text-align: center;
+width: auto;
+transform: translate(50px, 0px);
+border: none;
+font-size: 1em;
+outline: none;
+font-weight: 600;
+font-family: 'Playfair Display', serif;
+letter-spacing: 4px;
+}
+</style>
+{% endblock style %}
+{% block nav %}
+<li><a href="/appointments">Appointments</a></li>
+<li><a href="/inventory">Inventory</a></li> 
+{% endblock nav %}
+{% block editlist %}
+<div class="date_btn" >
+    <input type="button" id = "edit" value='Edit List'>
+    </div>
+{% endblock editlist %}
