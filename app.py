@@ -9,48 +9,56 @@ def indexdoctor():
 @app.route("/admin", methods=['POST', 'GET'])
 def indexadmin():
      return render_template('indexadmin.html')
-@app.route("/appointments", methods=['POST', 'GET'])
-def appointments():
-     return render_template('appointments.html')
+@app.route("/doctor/myappointments", methods=['POST', 'GET'])
+def myappointments():
+     return render_template('myappointments.html')
+@app.route("/admin/appointments",methods=['POST','GET'])
+def allappointments():
+     return render_template("myappointments.html")
+
      
 @app.route("/login.html", methods=['POST','GET'])
 def login():
-     return render_template('login.html')
+     if request.method =="POST" :
+          access=str(request.form['access'])
+          if access=='patient':
+              return render_template('indexpatient.html') 
+          if access=='doctor':
+               return render_template('indexdoctor.html')
+          if access=='admin':
+               return render_template('indexadmin.html',access=access)
+         
+     else:
+          return render_template('login.html')
 
 @app.route("/signup.html",methods=['POST','GET'])
 def signup():
-     return render_template('signup.html')
+      if request.method =="POST" :
+          name=str(request.form['name'])
+          return render_template('indexpatient.html', name=name)
+         
+      else:
+          return render_template('signup.html')
 
-@app.route("/list", methods=['POST', 'GET'])
+@app.route("/patient/list", methods=['POST', 'GET'])
 def list():
      return render_template('doctorslist.html')
 
-@app.route("/adminlist", methods=['POST', 'GET'])
+@app.route("/admin/list", methods=['POST', 'GET'])
 def listadmin():
      return render_template('adminlist.html')
-@app.route("/inventory", methods=['POST','GET'])
-def inventory():
-     return render_template('inventory.html')
-
+@app.route("/doctor/inventory", methods=['POST','GET'])
+def doctorinventory():
+     return render_template('doctorinventory.html')
+@app.route("/admin/inventory",methods=['POST','GET'])
+def admininventory():
+     return render_template("admininventory.html")
 @app.route("/contact.html", methods=['POST', 'GET'])
 def contact():
      return render_template('contact.html')
 
-@app.route("/gallery.html", methods=['POST', 'GET'])
-def gallery():
-     return render_template('gallery.html')
 
-@app.route("/icons.html",methods=['POST','GET'])
-def icons():
-     return render_template('icons.html')
 
-@app.route("/services.html", methods=['POST','GET'])
-def services():
-     return render_template('services.html')
-
-@app.route("/typography.html",methods=['POST','GET'])
-def typography():
-     return render_template('typography.html')
 if __name__ == '__main__':        
 
     app.run(debug=True)
