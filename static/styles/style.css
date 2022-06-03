@@ -398,26 +398,26 @@ nav.navbar.navbar-default {
 	border-radius:50%;
 }
 .carousel .item{ 
-	background:url(../ban2.jpg)no-repeat center 0px;
+	background:url(../istock2.jpg)no-repeat center 0px;
 	background-size:cover;  
 	height: 760px!important;
 	
 } 
 .carousel .item1{ 
     
-	background:url(../ban4.jpg)no-repeat center 0px;
+	background:url(../well.jpg)no-repeat center 0px;
 	background-size:cover;  
 	height: 760px!important;
 	
 } 
 .carousel .item2{ 
-	background:url(../ban55.jpg)no-repeat center 0px;
+	background:url(../istock3.jpg)no-repeat center 0px;
 	background-size:cover;
 	    height: 760px!important;
 	
 } 
 .carousel .item3{ 
-	background:url(../ban6.jpg)no-repeat center 0px;
+	background:url(../istock111.jpg)no-repeat center 0px;
 	background-size:cover;
 	    height: 760px!important;
 	
@@ -880,32 +880,32 @@ nav.navbar.navbar-default {
 }
 .w3-services-grid1{
 text-align: center;
-    background: #e5e5e5;
+    background: #000000;
 	border-top: 2px solid #23c3fe;
 }
 .w3-services-grid2{
 text-align: center;
-    background: #e5e5e5;
+    background: #000000;
     border-top: 2px solid #fb213a;
 }
 .w3-services-grid3{
 text-align: center;
-    background: #e5e5e5;
+    background: #000000;
     border-top: 2px solid #7ecc13;
 }
 .w3-services-grid4{
 text-align: center;
-    background: #e5e5e5;
+    background: #000000;
     border-top: 2px solid #f48e96;
 }
 .w3-services-grid5{
 text-align: center;
-    background: #e5e5e5;
+    background: #000000;
     border-top: 2px solid #232323;
 }
 .w3-services-grid6{
 text-align: center;
-    background: #e5e5e5;
+    background: #000000;
     border-top: 2px solid #00b06c;
 }
 
@@ -943,7 +943,7 @@ color: #fff;
 .w3-services-grid1 h3,.w3-services-grid6 h3,.w3-services-grid2 h3,.w3-services-grid3 h3,.w3-services-grid4 h3,.w3-services-grid5 h3 {
     margin: 0.5em;
 	font-size: 1.5em;
-	color: #3eb8d7;
+	color: #ffffff;
 }
 .w3-services-grid-bottom {
     margin: 4em 0;
@@ -976,7 +976,7 @@ color: #fff;
     margin: 1em 0;
 }
 div#services {
-    background-color: #0066ff;
+    background-color: #ffffff;
 }
  .services-head h3{
  color:#fff;

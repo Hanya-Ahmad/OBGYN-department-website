@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+
+    {% block headerclass %}
+    <div class="banner-top">
+        <div class="banner-header">
+            {% endblock headerclass %}
+            {% block nav %}
+            <li><a href="/appointments">My Appointments</a></li> 
+            <li><a href="/inventory">Inventory</a></li> 
+            {% endblock nav %} 
+            {% block body %}
+            <!-- slider -->
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1" class=""></li>
+                <li data-target="#myCarousel" data-slide-to="2" class=""></li>
+                <li data-target="#myCarousel" data-slide-to="3" class=""></li>
+       
+            </ol>
+            <div class="carousel-inner" role="listbox">
+                <div class="item active"> 
+                    <div class="banner-dott">
+                    <div class="container">
+                        <div class="carousel-caption">
+                            <h3>"A woman's health is her capital"</h3>
+                            <div class="contrast">
+                                  <p>-Harriet Beecher Stowe</p>
+                             </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <div class="item item1"> 
+                    <div class="banner-dott">
+                    <div class="container">
+                        <div class="carousel-caption">
+                            <h3>Your wellbeing is our top priority</h3>
+                            <div class="contrast">
+                                  <p> Vestibulum ante ipsum primis in faucibus orci luctus et ultrices.</p>
+                             </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <div class="item item2"> 
+                    <div class="banner-dott">
+                    <div class="container">
+                        <div class="carousel-caption">
+                            <h3>We provide high-tech devices</h3>
+                              <div class="contrast">
+                                  <p> Vestibulum ante ipsum primis in faucibus orci luctus et ultrices.</p>
+                              </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <div class="item item3"> 
+                    <div class="banner-dott">
+                    <div class="container">
+                        <div class="carousel-caption">
+                             <h3>We will be with you every step of the way</h3>
+                             
+                              <div class="contrast">
+                                  <p> Vestibulum ante ipsum primis in faucibus orci luctus et ultrices.</p>
+                              </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                
+<!--                 <div class="item item4"> 
+                    <div class="banner-dott">
+                    <div class="container">
+                        <div class="carousel-caption">
+                             <h3>Food is our common ground </h3>
+                              
+                              <div class="contrast">
+                                  <p> Vestibulum ante ipsum primis in faucibus orci luctus et ultrices.</p>
+                              </div>
+                        </div>
+                    </div>
+                    </div>
+                </div> -->
+            </div>
+            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div> 
+{% endblock body %}
