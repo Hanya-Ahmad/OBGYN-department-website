@@ -641,7 +641,7 @@ nav.navbar.navbar-default {
 	-moz-box-shadow: 0px 1px 8px 0px rgba(24, 24, 23, 0.42); 
     box-shadow: 0px 1px 8px 0px rgba(24, 24, 23, 0.42);
 }
-.agileits_reservation input[type="text"],.agileits_reservation input[type="password"], select#country, select#country1, .email input[type="email"] {
+.agileits_reservation input[type="text"],.agileits_reservation input[type="password"], select#country, select#access, .email input[type="email"] {
     width: 100%;
     color: #9F9F9F;
     font-size: 1em;
@@ -1133,7 +1133,7 @@ div#services {
 	-moz-box-shadow: 0px 1px 8px 0px rgba(24, 24, 23, 0.42); 
     box-shadow: 0px 1px 8px 0px rgba(24, 24, 23, 0.42);
 }
-.agileits_reservation input[type="text"], select#country, select#country1, .email input[type="email"] {
+.agileits_reservation input[type="text"], select#country, select#access, .email input[type="email"] {
     width: 100%;
     color: #9F9F9F;
     font-size: 1em;

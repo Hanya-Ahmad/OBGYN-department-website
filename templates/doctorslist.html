@@ -4,6 +4,9 @@
 		<div class="banner-header banner2">
 			<div class="banner-dott1">
 				{% endblock headerclass %}
+				{% block nav %}
+				<li><a href="/list">Doctors</a></li>
+				{% endblock nav %}
 	{% block body %}
 		
 
@@ -37,8 +40,12 @@
 	
 				</a>
 				
-				{% block editlist %}
-	{% endblock editlist %}
+				{% if access=='admin' %}
+				<div class="date_btn" >
+					<input type="button" id = "edit" value='Edit List' ">
+					</div>
+					{% endif %}
+			
 			  </div>
 			
 	</div>

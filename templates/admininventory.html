@@ -1,19 +1,32 @@
-{% extends 'base.html' %}
+{% extends 'adminbase.html' %}
+{% block style %}
+<style>
+#edit{
+background-color: #0392ce;
+color:white;
+text-align: center;
+width: auto;
+transform: translate(50px, 0px);
+border: none;
+font-size: 1em;
+outline: none;
+font-weight: 600;
+font-family: 'Playfair Display', serif;
+letter-spacing: 4px;
+}
+</style>
+{% endblock style %}
 
     {% block headerclass %}
 		<div class="banner-header banner2">
 			<div class="banner-dott1">
 				{% endblock headerclass %}
 
-    {% block nav %}
-		<li><a href="/appointments">Appointments</a></li>
-		<li><a href="/inventory">Inventory</a></li> 
-		{% endblock nav %}
-		{% block body %}
 
+		{% block body %}
 	<div class="team" id="team">
 			<div class="w3-heading-all">
-				<h3>My Appointments</h3>
+				<h3>Inventory</h3>
 			</div>
 			<div class="list-group">
 				<a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
@@ -41,7 +54,12 @@
 				  <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
 	
 				</a>
-			
+				
+				{% block editlist %}
+                <div class="date_btn" >
+                    <input type="button" id = "edit" value='Edit List' >
+                    </div>
+	{% endblock editlist %}
 			  </div>
 			
 	</div>

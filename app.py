@@ -1,10 +1,5 @@
-from flask import Flask, request, render_template,redirect
-from flask_sqlalchemy import SQLAlchemy
-from flask_login import UserMixin
-from flask_login import login_required , logout_user , login_user, login_manager , LoginManager, current_user 
-
+from flask import Flask, request, render_template
 app = Flask(__name__)
-<<<<<<< HEAD
 @app.route("/", methods=['POST', 'GET'])
 def indexpatient():
      return render_template('indexpatient.html')
@@ -22,12 +17,6 @@ def allappointments():
      return render_template("myappointments.html")
 
      
-=======
-
-@app.route("/index.html", methods=['POST', 'GET'])
-def index():
-     return render_template('index.html')
->>>>>>> 497a4dc9c7d013c1cd7a0fd29958714d21054846
 @app.route("/login.html", methods=['POST','GET'])
 def login():
      if request.method =="POST" :

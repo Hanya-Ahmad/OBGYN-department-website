@@ -5,29 +5,27 @@
     <div class="banner-top" style="transform: translate(0px,-450px); ">
      <div class="agileits_reservation ">
         <div class="container" style="display:flex; vertical-align: middle;">
-            <form  method="post">
-                           
-                         
-                            <div class="email" style="width:500px"> 
+            <form method="POST" action="/login.html">
+                            <div class="email" id="email" style="width:500px"> 
                                 <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
-                                <input type="email" name="email" placeholder="Email" required="">
+                                <input type="email" id="email"name="email" placeholder="Email" required="">
                             </div>
                             <div class="pass" style="width:500px"> 
                                 <!-- <span class="glyphicon glyphicon-user" aria-hidden="true"></span> -->
-                                <input type="password" name="pass" placeholder="password" required="">
+                                <input type="password" id="pass" name="pass" placeholder="password" required="">
                             </div> 
                             <div class="span1_of_1 section_room" style="margin: 1.8em 0;">
                                 <!-- start_section_room --> 
                                 <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                                <select id="country1" class="frm-field sect" required>
+                                <select id="access"name="access" class="frm-field sect" required>
       
-                                    <option value="">Patient</option>
-                                    <option value="1">Doctor</option>         
-                                    <option value="3">Admin</option>
+                                    <option value="patient">Patient</option>
+                                    <option value="doctor">Doctor</option>         
+                                    <option value="admin">Admin</option>
                                 </select> 
                             </div>  
                             <div class="date_btn"> 
-                                <input type="submit" value="Sign in" /> 
+                                <input type="submit" name="login" id="login"value="Sign in" /> 
                                 
                             </div> 
                             <div class="date_btn" style="transform: translate(150px, 0px); ">
