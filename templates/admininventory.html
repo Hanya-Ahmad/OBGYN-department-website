@@ -1,21 +1,6 @@
 {% extends 'adminbase.html' %}
-{% block style %}
-<style>
-#edit{
-background-color: #0392ce;
-color:white;
-text-align: center;
-width: auto;
-transform: translate(50px, 0px);
-border: none;
-font-size: 1em;
-outline: none;
-font-weight: 600;
-font-family: 'Playfair Display', serif;
-letter-spacing: 4px;
-}
-</style>
-{% endblock style %}
+
+
 
     {% block headerclass %}
 		<div class="banner-header banner2">
@@ -23,46 +8,64 @@ letter-spacing: 4px;
 				{% endblock headerclass %}
 
 
-		{% block body %}
-	<div class="team" id="team">
-			<div class="w3-heading-all">
-				<h3>Inventory</h3>
-			</div>
-			<div class="list-group">
-				<a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-				  <div class="d-flex w-100 justify-content-between">
-					<h5 class="mb-1">Item 1</h5>
-                    <small> number: </small>
-					
-				  </div>
-				  <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-				
-				</a>
-				<a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-				  <div class="d-flex w-100 justify-content-between">
-					<h5 class="mb-1">Item 2</h5>
-					<small class="text-muted">number:</small>
-				  </div>
-				  <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-		
-				</a>
-				<a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-				  <div class="d-flex w-100 justify-content-between">
-					<h5 class="mb-1">Item 3</h5>
-					<small class="text-muted">number:</small>
-				  </div>
-				  <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-	
-				</a>
-				
-				{% block editlist %}
-                <div class="date_btn" >
-                    <input type="button" id = "edit" value='Edit List' >
-                    </div>
-	{% endblock editlist %}
-			  </div>
-			
-	</div>
-	
-	<!--//team-->
-	{% endblock body %}
+				{% block body %}
+				<div class="container">
+					<div class="row clearfix">
+						<div class="col-md-12 column">
+							<table class="table table-bordered table-hover" id="tab_logic">
+								<thead>
+									<tr >
+										<th class="text-center">
+											#
+										</th>
+										<th class="text-center">
+											Device
+										</th>
+										<th class="text-center">
+											Serial Number
+										</th>
+									
+									</tr>
+								</thead>
+								<tbody>
+									
+									<tr id='addr0'>
+										<td>
+										1
+										</td>
+										<td>
+										<input type="text" name='device0'  placeholder='Device' class="form-control"/>
+										</td>
+										<td>
+										<input type="text" name='serial0' placeholder='Serial Number' class="form-control"/>
+										</td>
+								
+									</tr>
+									<tr id='addr1'></tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<a id="add_row" class="btn btn-default pull-left">Add Device</a><a id='delete_row' class="pull-right btn btn-default">Delete Device</a>
+				</div>
+					{% endblock body %}
+					{% block script %}
+					<script>
+					$(document).ready(function(){
+						var i=1;
+					   $("#add_row").click(function(){
+						$('#addr'+i).html("<td>"+ (i+1) +"</td><td><input name='device"+i+"' type='text' placeholder='Device' class='form-control input-md'  /> </td><td><input  name='serial"+i+"' type='text' placeholder='Serial Number'  class='form-control input-md'></td>");
+				  
+						$('#tab_logic').append('<tr id="addr'+(i+1)+'"></tr>');
+						i++; 
+					});
+					   $("#delete_row").click(function(){
+						   if(i>1){
+						   $("#addr"+(i-1)).html('');
+						   i--;
+						   }
+					   });
+				  
+				  });
+				</script>
+				{% endblock script %}

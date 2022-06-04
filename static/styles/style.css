@@ -650,17 +650,17 @@ nav.navbar.navbar-default {
     background: #F8F8F8;
     border: 1px solid #ccc;
 }
-.email{
+.email,.lname{
 	float:right;
 }
-.phone,.phonebooking{
+.phone,.fname, .phonebooking{
 	float:left;
 }
-.phone,.phonebooking,.email{
+.phone, .fname,.phonebooking,.email,.lname{
 	width:100%;
 	margin: 1.8em 0;
 } 
-.cuisine,.book_date,.section_room,.phone,.phonebooking,.email{
+.cuisine,.book_date,.section_room,.phone,.fname,.phonebooking,.email,.lname{
     position: relative;
 }
 .span1_of_1{
@@ -1142,17 +1142,17 @@ div#services {
     background: #F8F8F8;
     border: 1px solid #ccc;
 }
-.email{
+.email,.lname{
 	float:right;
 }
-.phone{
+.phone,.fname{
 	float:left;
 }
-.phone,.phonebooking,.email{
+.phone,.fname,.phonebooking,.email,.lname{
 	width:48.5%;
 	margin: 1.8em 0;
 } 
-.cuisine,.book_date,.section_room,.phone,.phonebooking,.email {
+.cuisine,.book_date,.section_room,.phone,.fname,.phonebooking,.email,.lname {
     position: relative;
 }
 .span1_of_1{
@@ -2868,7 +2868,7 @@ div#bs-example-navbar-collapse-1 {
 }
 }
 @media(max-width:480px){
-.phone,.phonebooking, .email {
+.phone,.fname,.phonebooking, .email,.lname {
     width: 100%;
     margin: 1.5em 0;
     float: none;

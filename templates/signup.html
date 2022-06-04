@@ -1,13 +1,20 @@
 {% extends 'loginbase.html' %}
 
     {% block loginbody %}
-    <div class="banner-top" style="transform: translate(0px,-450px); ">
+    <div class="banner-top" style="transform: translate(0px,-550px); ">
      <div class="agileits_reservation ">
-        <div class="container" style="display:flex; ">
+        <div class="container" style="display:flex; transform: translate(-36px, 0px) ">
             <form  method="post">
-                           
+                <div class="fname"> 
+                    <span aria-hidden="true"></span>
+                    <input id= "fname" type="text" name="fname" placeholder="First Name" required=""> 
+                </div>
+                            <div class="lname" > 
+                                <span  aria-hidden="true"></span>
+                                <input id="lname" type="text" name="lname" placeholder="Last Name" required="">
+                            </div>
                 <div class="cuisine"> 
-                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
                     <input type="text" id="username" name="username" placeholder="Enter username" required="">
                 </div>
                 <div class="phone"> 
@@ -19,7 +26,7 @@
                                 <input type="email" name="email" placeholder="Email" required="">
                             </div>
                             <div class="pass" > 
-                                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                                <span  aria-hidden="true"></span>
                                 <input type="password" name="pass" placeholder="password" required="">
                             </div> 
                             <div class="clearfix"> </div>

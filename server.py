@@ -1,5 +1,5 @@
 import os.path
-import mysql.connector as mysqlc
+import mysql.connector 
 from email import message
 from flask import Flask, render_template, request, session, url_for
 from flask_sqlalchemy import SQLAlchemy
@@ -8,10 +8,17 @@ from flask_login import login_required , logout_user , login_user, login_manager
 
 
 #!connction to database 
+mydb = mysql.connector.connect(
+    host="localhost",
+   user="root",
+ passwd="root",
+database="patients"
+)
 
+mycursor = mydb.cursor(buffered=True)
 local_server = True
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI']='mysql://root:@localhost/obgyn'
+app.config['SQLALCHEMY_DATABASE_URI']='mysql://root/root:@localhost/patients'
 db = SQLAlchemy(app)
 app.secret_key="1234"
 

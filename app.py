@@ -14,7 +14,7 @@ def myappointments():
      return render_template('myappointments.html')
 @app.route("/admin/appointments",methods=['POST','GET'])
 def allappointments():
-     return render_template("myappointments.html")
+     return render_template("allappointments.html")
 
      
 @app.route("/login.html", methods=['POST','GET'])

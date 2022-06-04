@@ -8,40 +8,46 @@
  
 		{% block body %}
 
-	<div class="team" id="team">
-			<div class="w3-heading-all">
-				<h3>My Appointments</h3>
-			</div>
-			<div class="list-group">
-				<a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-				  <div class="d-flex w-100 justify-content-between">
-					<h5 class="mb-1">Item 1</h5>
-                    <small> number: </small>
-					
-				  </div>
-				  <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-				
-				</a>
-				<a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-				  <div class="d-flex w-100 justify-content-between">
-					<h5 class="mb-1">Item 2</h5>
-					<small class="text-muted">number:</small>
-				  </div>
-				  <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
 		
-				</a>
-				<a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-				  <div class="d-flex w-100 justify-content-between">
-					<h5 class="mb-1">Item 3</h5>
-					<small class="text-muted">number:</small>
-				  </div>
-				  <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-	
-				</a>
-			
-			  </div>
-			
+
+<div class="container">
+    <div class="row clearfix">
+		<div class="col-md-12 column">
+			<table class="table table-bordered table-hover" id="tab_logic">
+				<thead>
+					<tr >
+						<th class="text-center">
+							#
+						</th>
+						<th class="text-center">
+							Patient's Username
+						</th>
+						<th class="text-center">
+							Doctor
+						</th>
+						<th class="text-center">
+							Date
+						</th>
+						<th class="text-center">
+							Time
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for row in appointments %}
+					<tr id='addr0'>
+						<td> {{row.0}}</td>
+						<td> {{row.1}}</td>
+						<td> {{row.2}}</td>
+						<td> {{row.3}}</td>
+					
+					</tr>
+                    <tr id='addr1'></tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
 	</div>
 	
-	<!--//team-->
+</div>
 	{% endblock body %}

@@ -4,6 +4,7 @@
         <div class="banner-header">
             {% endblock headerclass %}
             {% block nav %}
+            <li><a href="/">Home</a></li>
             <li><a href="/patient/list">Doctors</a></li> <!--nshof lw fe pages htzhr ll patients bs-->
             {% endblock nav %} 
             {% block body %}
@@ -94,18 +95,7 @@
         </div> 
         <div class="agileits_reservation">
                         <form action="#" method="post">
-                            <div class="cuisine"> 
-                                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                                <input type="text" name="Location" placeholder="Enter name" required="">
-                            </div>
-                            <div class="phonebooking"> 
-                                <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>
-                                <input type="text" name="phone" placeholder="Phone" required=""> 
-                            </div>
-                            <div class="email"> 
-                                <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
-                                <input type="email" name="email" placeholder="Email" required="">
-                            </div>
+                        
                             <div class="clearfix"> </div>
                             <div class="agileits_reservation_grid">
                                 <div  class="span1_of_1 book_date"> 
@@ -116,10 +106,10 @@
                                     <span class="glyphicon glyphicon-time" aria-hidden="true"></span>  
                                     <input type="text" name="Time" class="timepicker" value=" Time">	 
                                 </div>
-                                <div class="span1_of_1 section_room">
+                                <div class="span1_of_1 section_room" >
                                     <!-- start_section_room --> 
                                     <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                                    <select id="country1" class="frm-field sect" required>
+                                    <select id="country" class="frm-field sect" required>
                                         <option value="">Doctor</option>
                                         <option value="1">Doctor 1</option>
                                         <option value="2">Doctor 2</option>         
