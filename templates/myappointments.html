@@ -15,34 +15,30 @@
 		<div class="col-md-12 column">
 			<table class="table table-bordered table-hover" id="tab_logic">
 				<thead>
-					<tr >
+					<tr id="addr0'">
+						
 						<th class="text-center">
-							#
+							Patient's ID
 						</th>
 						<th class="text-center">
-							Patient's Username
+							Appointment Date
 						</th>
 						<th class="text-center">
-							Doctor
+							Apppointment Time
 						</th>
 						<th class="text-center">
-							Date
-						</th>
-						<th class="text-center">
-							Time
+							Doctor's Comment
 						</th>
 					</tr>
 				</thead>
 				<tbody>
-					{% for row in appointments %}
-					<tr id='addr0'>
-						<td> {{row.0}}</td>
-						<td> {{row.1}}</td>
-						<td> {{row.2}}</td>
-						<td> {{row.3}}</td>
-					
+					{% for row in data %}
+					<tr id="addr0'">
+						{% for cell in row %}
+						<td> {{cell}}</td>
+						
+						{% endfor %}
 					</tr>
-                    <tr id='addr1'></tr>
 					{% endfor %}
 				</tbody>
 			</table>

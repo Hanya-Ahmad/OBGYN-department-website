@@ -40,7 +40,7 @@ def signup():
       else:
           return render_template('signup.html')
 
-@app.route("/patient/list", methods=['POST', 'GET'])
+@app.route("/list", methods=['POST', 'GET'])
 def list():
      return render_template('doctorslist.html')
 
