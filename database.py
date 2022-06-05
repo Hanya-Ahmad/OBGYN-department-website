@@ -39,17 +39,19 @@ mycursor = mydb.cursor()
 
 #mycursor.execute ("CREATE TABLE inventory ( device_id INT AUTO_INCREMENT PRIMARY KEY, device_name varchar(100),doctor_id INT, device_count INT, device_status ENUM('available','not available') )")
 
+# mycursor.execute (" CREATE TABLE user ( userid INT AUTO_INCREMENT PRIMARY KEY , username VARCHAR(255), pass VARCHAR(255), access ENUM('admin','patient','doctor'))")
 
-# sql = "INSERT INTO admin (admin_id, admin_email_address, admin_password, admin_name, hospital_name, hospital_address, hospital_contact_no) VALUES (%s, %s, %s, %s, %s, %s, %s)"
 
-# val = ('1', 'gufranmohammed@gmail.com', 'password', 'Gufran Mohammed', 'Mount Hospital', '115, Last Lane, NYC', '741287410' )
+sql = "INSERT INTO admin (admin_id, admin_email_address, admin_password, admin_name, hospital_name, hospital_address, hospital_contact_no) VALUES (%s, %s, %s, %s, %s, %s, %s)"
 
-# mycursor.execute(sql, val)
+val = ('3', 'gufranmohammed@gmail.com', 'password', 'Gufran Mohammed', 'Mount Hospital', '115, Last Lane, NYC', '741287410' )
+
+mycursor.execute(sql, val)
 
 
 # sql1 = "INSERT INTO appointment_table (appointment_id, doctor_id, patient_id, doctor_schedule_id, appointment_number, appointment_time, status, doctor_comment) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
 
-# val1 = [('3', '1', '3', '2', '1000', '09:00:00', 'Cancel', ''),
+# val1 = ('1', '2', '1', '1', '1000', '09:00:00', 'Cancel', ''),
 #         ('4', '1', '3', '2', '1001', '09:00:00', 'Booked', ''),
 #         ('5', '1', '4', '2', '1002', '09:30:00', 'Completed', 'She gave birth to boy baby.'),
 #         ('6', '5', '3', '7', '1003', '18:00:00', 'In Process', ''),
@@ -59,7 +61,7 @@ mycursor = mydb.cursor()
 
 # sql2 = "INSERT INTO doctor_schedule_table (schedule_id, doctor_id, schedule_date, schedule_day, schedule_start_time, schedule_end_time, schedule_status) VALUES (%s, %s, %s, %s, %s, %s, %s)"
 
-# val2 = [('2', '1',  '2021-02-19', 'Friday',    '09:00', '14:00',  'Active'),
+# val2 =  ('1', '2',  '2021-02-19', 'Friday',    '09:00', '14:00',  'Active')
 #         ('3', '2',  '2021-02-19', 'Friday',    '09:00', '12:00',  'Active'),
 #         ('4', '5',  '2021-02-19', 'Friday',    '10:00', '14:00',  'Active'),
 #         ('5', '3',  '2021-02-19', 'Friday',    '13:00', '17:00',  'Active'),
@@ -73,7 +75,7 @@ mycursor = mydb.cursor()
 #         ('13', '6', '2021-02-24', 'Wednesday', '15:30', '18:30',  'Active'),
 #         ('14', '6', '2021-02-25', 'Thursday',  '10:00', '13:30',  'Active')]
 
-# mycursor.executemany(sql2, val2)        
+# mycursor.execute(sql2, val2)        
 
 
 # sql3 = "INSERT INTO doctor (doctor_id, doctor_email_address, doctor_password, doctor_name, doctor_phone_no, doctor_address, doctor_date_of_birth, doctor_degree, doctor_status) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
@@ -84,27 +86,59 @@ mycursor = mydb.cursor()
 #         ('4', 'williampeterson@gmail.com', 'password', 'Dr. William Peterson', '8523698520', '32, Green City, NYC', '1984-06-11', 'MBBS MD', 'Active'),
 #         ('5', 'emmalarsdattor@gmail.com', 'password', 'Dr. Emma Larsdattor', '9635852025', '25, Silver Arch', '1988-03-03', 'MBBS MD', 'Active'),
 #         ('6', 'manuel.armstrong@gmail.com', 'password', 'Dr. Manuel Armstrong', '8523697410', '2378 Fire Access Road Asheboro, NC 27203', '1989-03-01', 'MBBS MD (Medicine)','Active',)]
+# sql3 = "INSERT INTO doctor (doctor_id, doctor_email_address, doctor_password, doctor_name, doctor_phone_no, doctor_address, doctor_date_of_birth, doctor_degree, doctor_status) VALUES ( %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+# val3 = ('2', 'hideiparker@gmail.com', 'password', 'Dr. hidei Parker', '7539518520', '102, Sky View NYC', '2001-10-29', 'MBBS MS','Active')
 
-# mycursor.executemany(sql3, val3)
+# mycursor.execute(sql3, val3)
 
 
-# sql4 = "INSERT INTO patient (patient_id, patient_email_address, patient_password, patient_first_name, patient_last_name, patient_date_of_birth, patient_address, patient_phone_no) VALUES (%s, %s, %s, %s, %s,%s, %s, %s)"
+# sql4 = "INSERT INTO patient (patient_id, patient_email_address, patient_password, patient_first_name, patient_last_name, patient_date_of_birth, patient_address, patient_phone_no) VALUES ( %s, %s, %s, %s,%s, %s, %s, %s)"
 
-# val4 = [('3', 'jacobmartin@gmail.com', 'password', 'Jacob', 'Martin', '2021-02-26', 'Green view, 1025,    NYC','85745635210'),
+# val4 = ('1', 'mahmoud@gmail.com', 'password', 'mahmoud', 'Mohammed', '2021-02-26', 'Green view, 1025,    NYC','85745635210')
 #         ('4', 'oliviabaker@gmail.com', 'password', 'Olivia', 'Baker', '2001-04-05', 'Diamond street, 115, NYC', '7539518520'),
 #         ('5', 'amberanderson@gmail.com', 'password', 'Amber', 'Anderson', '1995-07-25','2083 Cameron Road Buffalo, NY 14202', '75394511442')]
 
-# mycursor.executemany(sql4, val4)
+# mycursor.execute(sql4, val4)
 
+
+# sql5 = "INSERT INTO inventory (device_id, device_name, doctor_id, device_count, device_status,) VALUES (%s, %s, %s, %s, %s)"
+
+# val5 = [('1', 'colposcopes',               '', '5',        'available'),
+#         ('2', 'ultrasound system',         '', '2',        'not available'),
+#         ('3', 'Liquid Based Cytology set', '', '4',        'available')]
 
 # sql5 = "INSERT INTO inventory (device_id, device_name, doctor_id, device_count, device_status) VALUES (%s, %s, %s, %s, %s)"
 
-# val5 = [('1', 'colposcopes',               '1', '5',        'available'),
-#         ('2', 'ultrasound system',         '2', '2',        'not available'),
-#         ('3', 'Liquid Based Cytology set', '3', '4',        'available')]
+# val5 = ('1', 'colposcopes',               '2', '5',        'available')
 
-# mycursor.executemany(sql5, val5)
+# mycursor.execute(sql5, val5)
+
+# sql6 = "INSERT INTO user (userid,	username,	pass,	access) VALUES (%s, %s, %s, %s)"
+
+# val6 = [('1', 'mahmoud', 'password',  'patient'),
+#         ('2', 'hiedi',   'password',  'doctor')]
+
+# sql6 = "INSERT INTO user (userid,	username,	pass,	access) VALUES (%s, %s, %s, %s)"
+
+# val6 = ('3', 'gufran', 'password',  'admin')
+
+# mycursor.execute(sql6, val6)
+
+# sql = "INSERT INTO admin (adminid) VALUES ('1')"
+# mycursor.execute(sql)
+
+# query = ("ALTER TABLE doctor ADD FOREIGN KEY (doctorid) REFERENCES user(userid)")
+
+#query = ("ALTER TABLE patient ADD FOREIGN KEY (patientid) REFERENCES user(userid)")
+
+#query = ("ALTER TABLE admin ADD (adminid INT)")
+
+# Delete_all_rows = """truncate table patient """
+# mycursor.execute(Delete_all_rows)
+
+# query = ("ALTER TABLE inventory ADD FOREIGN KEY(doctor_id) REFERENCES doctor(doctor_id)")
+
+# mycursor.execute(query)
 
 mydb.commit()
 
-print(mycursor.rowcount, "record inserted.")
