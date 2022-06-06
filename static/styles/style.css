@@ -664,16 +664,16 @@ div.agileits_reservation{
 	width:100%;
 	margin: 1.8em 0;
 } 
-.cuisine,.book_date,.section_room,.phone,.fname,.phonebooking,.email,.age,.lname{
+.cuisine,.username,.password,.book_date,.section_room,.phone,.fname,.phonebooking,.email,.age,.lname{
     position: relative;
 }
 .span1_of_1{
 	float: left;
 	list-style:none;
-	width:30.9%;
+	width:39%;
 }
 .span1_of_1:nth-child(2) {
-    margin: 0 1em;
+    margin:5cm
 }
 .agileits_reservation span.glyphicon{
     position: absolute;
@@ -1156,15 +1156,16 @@ div#services {
 	width:48.5%;
 	margin: 1.8em 0;
 } 
-.cuisine,.book_date,.section_room,.phone,.fname,.phonebooking,.email,.age,.lname {
+.cuisine,.username,.password,.book_date,.section_room,.phone,.fname,.phonebooking,.email,.age,.lname {
     position: relative;
 }
-.span1_of_1{
+.span1_of_1,.span1_of_2,.span1_of_3,.span1_of_4{
 	float: left;
 	list-style:none;
 	width:30.9%;
+    margin: 0 1em;
 }
-.span1_of_1:nth-child(2) {
+.span1_of_1:nth-child(8) {
     margin: 0 1em;
 }
 .agileits_reservation span.glyphicon{

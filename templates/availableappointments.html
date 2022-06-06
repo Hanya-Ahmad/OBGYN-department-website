@@ -83,8 +83,8 @@
 			 <span class="sr-only">Next</span>
 		 </a>
 	 </div> 
-	 <div class="agileits_reservation">
-		 <form action="#" method="post">
+	 <div class="agileits_reservation" style="">
+		 <form action="{{ url_for('avaialable_appointments') }}" method="post">
 		 
 			 <div class="clearfix"> </div>
 			 <div class="agileits_reservation_grid">
@@ -92,33 +92,44 @@
 					 <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
 					 <input class="date"  id="datepicker" name="date" min="2022-10-05" placeholder="Select Date"  type="text" required="">
 				 </div> -->
-				 <div class="span1_of_1 section_room" >
+				 <div class="span1_of_4 section_room" >
 					<!-- start_section_room --> 
 					<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-					<select id="date" class="frm-field sect" required> <!-- id was country /1-->
-						<option value="">Doctor</option>
-						<option value="1">Doctor 1</option>
-						<option value="2">Doctor 2</option>         
-						<option value="3">Doctor 3</option>
+					<select id="doctor" name="doctor" class="frm-field sect" required> <!-- id was country /1-->
+						{% for doctor in doctors %}
+		
+						<option value="{{doctor}}">{{ doctor }}</option>
+						{% endfor %}
+						
 					</select> 
 				</div> 
-				<div class="span1_of_1 section_room">
-					<span aria-hidden="true"></span>
-					<select id="doctor" class="frm-field sect" required>
-						<option value="1"> Dr1</option>
-						<option value="2"> Dr2</option>
+				<div class="span1_of_2 section_room">
+					<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+					<select id="date" name="date" class="frm-field sect" required>
+						{% for date in dates %}
+		
+						<option value="{{date}}">{{ date }}</option>
+						{% endfor %}
+					
 					</select>
 
 				</div>
-				 <div class="span1_of_1 section_room"> 
-					 <span class="glyphicon glyphicon-time" aria-hidden="true"></span>  
-					 <input type="text" id="time" name="Time" class="timepicker" value=" Time">	 
-				 </div>
-			
-				 <div class="date_btn" style="transform: translate(150px, 0px); ">
-					 <input type="button" onClick="location.href='/patient/availableappointments/patientbooking/success'"
-					 value='Book Now'>
-					 </div> 
+				<div class="span1_of_3 section_room">
+					<span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+					<select id="time" name="time" class="frm-field sect" required>
+						{% for time in times %}
+		
+						<option value="{{time}}">{{ time }}</option>
+						{% endfor %}
+					
+					</select>
+
+				</div>
+				<div class="date_btn"> 
+					<input type="submit" name="booking" value="Book Now" /> 
+					
+				</div> 
+				
 				 <div class="clearfix"></div>
 			 </div>
 			 
