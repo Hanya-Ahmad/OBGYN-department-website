@@ -1,10 +1,14 @@
 {% extends 'loginbase.html' %}
 
+
+                                {% block nav %}
+                                <li><a href="/login">Log In</a></li>
+                                {% endblock nav %}
     {% block loginbody %}
     <div class="banner-top" style="transform: translate(0px,-550px); ">
      <div class="agileits_reservation ">
         <div class="container" style="display:flex; transform: translate(-36px, 0px) ">
-            <form  method="post">
+            <form  method="post" action="{{url_for('signup')}}">
                 <div class="fname"> 
                     <span aria-hidden="true"></span>
                     <input id= "fname" type="text" name="fname" placeholder="First Name" required=""> 
@@ -19,7 +23,7 @@
                 </div>
                 <div class="phone"> 
                     <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>
-                    <input type="text" name="phone" placeholder="Phone" required=""> 
+                    <input type="text" id="phone" name="phone" placeholder="Phone" required=""> 
                 </div>
                             <div class="email" > 
                                 <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
@@ -27,14 +31,14 @@
                             </div>
                             <div class="pass" > 
                                 <span  aria-hidden="true"></span>
-                                <input type="password" name="pass" placeholder="password" required="">
+                                <input type="password" id="pass" name="pass" placeholder="password" required="">
                             </div> 
                             <div class="clearfix"> </div>
                             <div class="agileits_reservation_grid">
-                            <div  class="span1_of_1 book_date" style="margin: 1.8em 0;"> 
-                                <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-                                <input class="date" id="datepicker" name="Text" placeholder="Date of birth"  type="text" required="">
-                            </div>
+                                <div class="age" style="width: 100%;"> 
+                                    <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                                    <input type="number" id="age" name="age" placeholder="Age" required="">
+                                </div>
                            
                         </div>
                             <div class="date_btn"> 

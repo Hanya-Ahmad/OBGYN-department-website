@@ -1,16 +1,15 @@
-{% extends 'adminbase.html' %}
-
+{% extends 'base.html' %}
     {% block headerclass %}
     <div class="banner-top">
         <div class="banner-header">
             {% endblock headerclass %}
-            {% block title %}
-            <h1 style="text-align:center"><a href="/admin">Welome,{{titlename}}</a></h1>
-            {% endblock title %}
+            {% block nav %}
+            <li><a href="/login">Log In</a></li>    
+
+            <li><a href="/signup"> Sign Up</a></li>
+            {% endblock nav %} 
             {% block body %}
-        
-             
-            <!-- slider -->
+                        <!-- slider -->
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
             <!-- Indicators -->
             <ol class="carousel-indicators">
@@ -39,7 +38,6 @@
                         <div class="carousel-caption">
                             <h3>Your wellbeing is our top priority</h3>
                             <div class="contrast">
-                                  <p> Vestibulum ante ipsum primis in faucibus orci luctus et ultrices.</p>
                              </div>
                         </div>
                     </div>
@@ -51,7 +49,7 @@
                         <div class="carousel-caption">
                             <h3>We provide high-tech devices</h3>
                               <div class="contrast">
-                                  <p> Vestibulum ante ipsum primis in faucibus orci luctus et ultrices.</p>
+                                  
                               </div>
                         </div>
                     </div>
@@ -64,26 +62,11 @@
                              <h3>We will be with you every step of the way</h3>
                              
                               <div class="contrast">
-                                  <p> Vestibulum ante ipsum primis in faucibus orci luctus et ultrices.</p>
                               </div>
                         </div>
                     </div>
                     </div>
                 </div>
-                
-<!--                 <div class="item item4"> 
-                    <div class="banner-dott">
-                    <div class="container">
-                        <div class="carousel-caption">
-                             <h3>Food is our common ground </h3>
-                              
-                              <div class="contrast">
-                                  <p> Vestibulum ante ipsum primis in faucibus orci luctus et ultrices.</p>
-                              </div>
-                        </div>
-                    </div>
-                    </div>
-                </div> -->
             </div>
             <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
                 <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
@@ -94,4 +77,7 @@
                 <span class="sr-only">Next</span>
             </a>
         </div> 
-{% endblock body %}
+        {% block footerhome %}
+                                 <li><a href="/" class="active">Home</a></li>
+                                 {% endblock footerhome %}
+        {% endblock body %} 

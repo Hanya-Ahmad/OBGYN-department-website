@@ -1,0 +1,47 @@
+{% extends 'bookingsuccess.html' %}
+
+{% block headerclass %}
+<div class="banner-header banner2">
+    <div class="banner-dott1">
+        {% endblock headerclass %}
+
+
+{% block body %}
+
+        <div class="w3-heading-all">
+          <h3 style="font-size:x-large"><strong>Your appointment has been successfully booked!</strong></h3>
+        </div>
+
+
+<div class="container">
+<div class="row clearfix">
+<div class="col-md-12 column">
+    <div class="table-responsive">
+    <table class="table table-bordered table-hover" id="tab_logic">
+        <thead>
+            {% for header in head %}
+				<th> {{ header }}</th>
+					
+					{% endfor %}
+				</tr>
+	  
+				<tr id="addr1"></tr>
+		
+        </thead>
+        <tbody>
+            {% for row in success %}
+            <tr id="addr0'">
+                {% for cell in row %}
+                <td> {{cell}}</td>
+                
+                {% endfor %}
+            </tr>
+            <tr id="addr1"></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+</div>
+</div>
+
+</div>

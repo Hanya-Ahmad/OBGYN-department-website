@@ -20,8 +20,12 @@
                 </div>
         </div>
                 {% endblock headerclass %}
-
+                
+                {% block nav %}
+                <li><a href="http://127.0.0.1:5000/login">Log In</a></li>
+                {% endblock nav %}
 {% block body %}
+
 {% block loginbody %}
 {% endblock loginbody%}
 

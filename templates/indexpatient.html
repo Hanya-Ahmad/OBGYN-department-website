@@ -1,11 +1,14 @@
-{% extends 'base.html' %}
+{% extends 'patientbase.html' %}
     {% block headerclass %}
     <div class="banner-top">
         <div class="banner-header">
             {% endblock headerclass %}
+            {% block title %}
+            <h1 style="text-align:center"><a href="/">Welcome,{{titlename}}</a></h1>
+            {% endblock title %}
             {% block nav %}
-            <li><a href="/">Home</a></li>
-            <li><a href="/patient/list">Doctors</a></li> <!--nshof lw fe pages htzhr ll patients bs-->
+            <li><a href="/patient">Home</a></li> 
+            <li><a href="http://127.0.0.1:5000/logout">Log Out</a></li>    
             {% endblock nav %} 
             {% block body %}
      
@@ -38,7 +41,6 @@
                         <div class="carousel-caption">
                             <h3>Your wellbeing is our top priority</h3>
                             <div class="contrast">
-                                  <p> Vestibulum ante ipsum primis in faucibus orci luctus et ultrices.</p>
                              </div>
                         </div>
                     </div>
@@ -50,7 +52,7 @@
                         <div class="carousel-caption">
                             <h3>We provide high-tech devices</h3>
                               <div class="contrast">
-                                  <p> Vestibulum ante ipsum primis in faucibus orci luctus et ultrices.</p>
+                                  
                               </div>
                         </div>
                     </div>
@@ -63,7 +65,6 @@
                              <h3>We will be with you every step of the way</h3>
                              
                               <div class="contrast">
-                                  <p> Vestibulum ante ipsum primis in faucibus orci luctus et ultrices.</p>
                               </div>
                         </div>
                     </div>
@@ -94,32 +95,9 @@
             </a>
         </div> 
         <div class="agileits_reservation">
-                        <form action="#" method="post">
-                        
-                            <div class="clearfix"> </div>
-                            <div class="agileits_reservation_grid">
-                                <div  class="span1_of_1 book_date"> 
-                                    <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-                                    <input class="date" id="datepicker" name="Text" placeholder="Select Date"  type="text" required="">
-                                </div>
-                                <div class="span1_of_1 section_room"> 
-                                    <span class="glyphicon glyphicon-time" aria-hidden="true"></span>  
-                                    <input type="text" name="Time" class="timepicker" value=" Time">	 
-                                </div>
-                                <div class="span1_of_1 section_room" >
-                                    <!-- start_section_room --> 
-                                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                                    <select id="country" class="frm-field sect" required>
-                                        <option value="">Doctor</option>
-                                        <option value="1">Doctor 1</option>
-                                        <option value="2">Doctor 2</option>         
-                                        <option value="3">Doctor 3</option>
-                                    </select> 
-                                </div>  
-                                <div class="clearfix"></div>
-                            </div>
+                        <form action="/patient/availableappointments" method="post">
                             <div class="date_btn"> 
-                                <input type="submit" value="Book An Appointment" /> 
+                                <input type="submit" value="Book an Appointment Now!" /> 
                             </div> 
                         </form>
                     </div>

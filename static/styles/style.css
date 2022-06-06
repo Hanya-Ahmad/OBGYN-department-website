@@ -631,6 +631,10 @@ nav.navbar.navbar-default {
 /*--//modal--*/
 /*-- //Banner-Slider --*/
 /*-- reservation --*/
+div.agileits_reservation{
+    justify-content: center;
+
+}
 .agileits_reservation {
 
     margin: -5em auto 0;
@@ -641,7 +645,7 @@ nav.navbar.navbar-default {
 	-moz-box-shadow: 0px 1px 8px 0px rgba(24, 24, 23, 0.42); 
     box-shadow: 0px 1px 8px 0px rgba(24, 24, 23, 0.42);
 }
-.agileits_reservation input[type="text"],.agileits_reservation input[type="password"], select#country, select#access, .email input[type="email"] {
+.agileits_reservation input[type="text"],.fname input[type="text"],.lname input[type="text"],.agileits_reservation input[type="password"],.agileits_reservation input[type="password"], select#doctor , select#date, select#access, select#time,.age input[type="number"], .email input[type="email"] {
     width: 100%;
     color: #9F9F9F;
     font-size: 1em;
@@ -650,17 +654,17 @@ nav.navbar.navbar-default {
     background: #F8F8F8;
     border: 1px solid #ccc;
 }
-.email,.lname{
+.email,.age,.lname{
 	float:right;
 }
 .phone,.fname, .phonebooking{
 	float:left;
 }
-.phone, .fname,.phonebooking,.email,.lname{
+.phone, .fname,.phonebooking,.email,.age,.lname{
 	width:100%;
 	margin: 1.8em 0;
 } 
-.cuisine,.book_date,.section_room,.phone,.fname,.phonebooking,.email,.lname{
+.cuisine,.book_date,.section_room,.phone,.fname,.phonebooking,.email,.age,.lname{
     position: relative;
 }
 .span1_of_1{
@@ -1129,11 +1133,11 @@ div#services {
     z-index: 999;
     background: #feffff4d;
     padding: 3em;
-	-webkit-box-shadow: 0px 1px 8px 0px rgba(24, 24, 23, 0.42);
-	-moz-box-shadow: 0px 1px 8px 0px rgba(24, 24, 23, 0.42); 
-    box-shadow: 0px 1px 8px 0px rgba(24, 24, 23, 0.42);
+	-webkit-box-shadow: 0px 1px 8px 0px rgba(24, 24, 23, 1.00);
+	-moz-box-shadow: 0px 1px 8px 0px rgba(24, 24, 23, 1.00); 
+    box-shadow: 0px 1px 8px 0px rgba(24, 24, 23, 1.00);
 }
-.agileits_reservation input[type="text"], select#country, select#access, .email input[type="email"] {
+.agileits_reservation input[type="text"], select#doctor,select#date, select#access, select#time, .email input[type="email"],.age input[type="number"] {
     width: 100%;
     color: #9F9F9F;
     font-size: 1em;
@@ -1142,17 +1146,17 @@ div#services {
     background: #F8F8F8;
     border: 1px solid #ccc;
 }
-.email,.lname{
+.email,.age,.lname{
 	float:right;
 }
 .phone,.fname{
 	float:left;
 }
-.phone,.fname,.phonebooking,.email,.lname{
+.phone,.fname,.phonebooking,.email,.age,.lname{
 	width:48.5%;
 	margin: 1.8em 0;
 } 
-.cuisine,.book_date,.section_room,.phone,.fname,.phonebooking,.email,.lname {
+.cuisine,.book_date,.section_room,.phone,.fname,.phonebooking,.email,.age,.lname {
     position: relative;
 }
 .span1_of_1{
@@ -2868,7 +2872,7 @@ div#bs-example-navbar-collapse-1 {
 }
 }
 @media(max-width:480px){
-.phone,.fname,.phonebooking, .email,.lname {
+.phone,.fname,.phonebooking, .email,.age,.lname {
     width: 100%;
     margin: 1.5em 0;
     float: none;

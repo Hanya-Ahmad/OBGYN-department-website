@@ -6,59 +6,88 @@
 				{% endblock headerclass %}
  
         {% block body %}
-
+        <br>
+        <div class="w3-heading-all">
+          <h3 style="font-size:x-large"><strong>Upcoming Appointments</strong></h3>
+        </div>
         <div class="container">
             <div class="row clearfix">
             <div class="col-md-12 column">
+              <div class="table-responsive">
               <table class="table table-bordered table-hover" id="tab_logic">
-                <thead>
-                  <tr >
-                    <th class="text-center">
-                      #
-                    </th>
-                    <th class="text-center">
-                      Patient's Username
-                    </th>
-                    <th class="text-center">
-                      Doctor
-                    </th>
-                    <th class="text-center">
-                      Date
-                    </th>
-                    <th class="text-center">
-                      Time
-                    </th>
-                  </tr>
+                <thead class="table-dark">
+                  <tr>
+                    
+                    {% for header in head %}
+                    <th> {{ header }}</th>
+						
+						{% endfor %}
+					</tr>
+          
+					<tr id="addr1"></tr>
+			
                 </thead>
                 <tbody>
-                  
-                  <tr id='addr0'>
-                    <td>
-                    1
-                    </td>
-                    <td>
-                    <input type="text" name='uname0'  placeholder="Patient's Username" class="form-control"/>
-                    </td>
-                    <td>
-                    <input type="text" name='doctor0' placeholder='Doctor' class="form-control"/>
-                    </td>
-                    <td>
-                    <input type="text" name='date0' placeholder='Date' class="form-control"/>
-                    </td>
-                    <td>
-                      <input type="text" name='time0' placeholder='Time' class="form-control"/>
-                      </td>
+                  {% for row in upcoming_appointments %}
+                  <tr id="addr0'">
+                    {% for cell in row %}
+                    <td> {{cell}}</td>
+                    
+                    {% endfor %}
                   </tr>
-                            <tr id='addr1'></tr>
+                  <tr id="addr1"></tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+              </div>
+
+            </div>
+          </div>
+          <!-- <a id="add_row" class="btn btn-default pull-left">Add Appointment</a><a id='delete_row' class="pull-right btn btn-default">Cancel Appointment</a> -->
+        </div>
+
+        <div class="w3-heading-all">
+          <h3 style="font-size:x-large"><strong>Past Appointments</strong></h3>
+        </div>
+        <div class="container">
+            <div class="row clearfix">
+            <div class="col-md-12 column">
+              <div class="table-responsive">
+              <table class="table table-bordered table-hover" id="tab_logic">
+                <thead>
+                  <tr>
+                    
+                    {% for header in head %}
+                    <th> {{ header }}</th>
+						
+						{% endfor %}
+					</tr>
+          
+					<tr id="addr1"></tr>
+			
+                </thead>
+                <tbody>
+                  {% for row in past_appointments %}
+                  <tr id="addr0'">
+                    {% for cell2 in row %}
+                    <td> {{cell2}}</td>
+                    
+                    {% endfor %}
+                  </tr>
+                  <tr id="addr1"></tr>
+                  {% endfor %}
                 </tbody>
               </table>
             </div>
+            </div>
           </div>
-          <a id="add_row" class="btn btn-default pull-left">Add Appointment</a><a id='delete_row' class="pull-right btn btn-default">Cancel Appointment</a>
+          <!-- <a id="add_row" class="btn btn-default pull-left">Add Appointment</a><a id='delete_row' class="pull-right btn btn-default">Cancel Appointment</a> -->
         </div>
+      </div>
+    </div>
           {% endblock body %}
-          {% block script %}
-          <script>
+          <!-- {% block script %} -->
+          <!-- <script>
           $(document).ready(function(){
             var i=1;
              $("#add_row").click(function(){
@@ -75,6 +104,6 @@
              });
           
           });
-        </script>
-        {% endblock script %}
-        
+        </script> -->
+        <!-- {% endblock script %}
+         -->

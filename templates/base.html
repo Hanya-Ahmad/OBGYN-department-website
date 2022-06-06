@@ -39,18 +39,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <span class="icon-bar"></span>
                         </button>
                         <div class="w3_navigation_pos " >
-                            <h1><a href="/">OB/GYN</a></h1>
+                            {% block title %}
+                            <h1 style="text-align:center"><a href="/">OBGYN</a></h1>
+                            {% endblock title %}
                         </div>
                     </div>
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
                         <nav>
                             <ul class="nav navbar-nav">
-                                <li><a href="http://127.0.0.1:5000/login.html">Log In</a></li>
+                               
                                 {% block nav %}
                                 {% endblock nav %}
 
-                                <li><a href="contact.html">Contact Us</a></li>
+                                <li><a href="/contactus">Contact Us</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -69,7 +71,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="container">
             <div class="footer_agile_inner_info_w3l">
                 <div class="col-md-4 footer-left">
-                    <h2><a href="index.html">OB/GYN </a></h2>
+                    <h2><a href="/patient">OB/GYN </a></h2>
                     <p>The Obstetrics and Gynecology department website provides an easy booking process.</p>
                     <ul class="social-nav model-3d-0 footer-social w3_agile_social two">
                                                                     <li><a href="#" class="facebook">
@@ -91,9 +93,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <div class="sign-gd">
                             <h4>Information </h4>
                             <ul>
-                                 <li><a href="/" class="active">Home</a></li>
-                <li><a href="http://127.0.0.1:5000/list" >Doctors</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
+                                {% block footerhome %}
+                              
+                                 {% endblock footerhome %}
+                <li><a href="/patient/availableappointments" >Available Appointments</a></li>
+                <li><a href="/contactus">Contact Us</a></li>
                                 
                             </ul>
                         </div>
