@@ -24,17 +24,15 @@
                                     <option value="admin">Admin</option>
                                 </select> 
                             </div>  
-                            {% if error!="" %}
                             <div class="date_btn"> 
-                                <input type="submit" name="login"  onclick=showAlert() value="Sign in" /> 
+                                <input type="submit" name="login"  value="Sign in" /> 
                                 
                             </div> 
-                            {% else %}
                             <div class="date_btn" style="transform: translate(150px, 0px); ">
                                 <input type="button" onClick="location.href='/signup'"
                                 value='Create an account'>
                                 </div>
-                            {% endif %}
+                                <mark>{{ error }}</mark>
                                  
                                 
                                 

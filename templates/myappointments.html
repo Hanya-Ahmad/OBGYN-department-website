@@ -9,7 +9,9 @@
 		{% block body %}
 
 		
-
+		<div class="w3-heading-all">
+			<h3 style="font-size:x-large"><strong>Upcoming Appointments</strong></h3>
+		  </div>
 <div class="container">
     <div class="row clearfix">
 		<div class="col-md-12 column">
@@ -33,20 +35,61 @@
 					</tr>
 				</thead>
 				<tbody>
-					{% for row in data %}
+					{% for row in upcoming_appointments %}
 					<tr id="addr0'">
-						{% for cell in row %}
-						<td> {{cell}}</td>
-						
-						{% endfor %}
+					  {% for cell in row %}
+					  <td> {{cell}}</td>
+					  
+					  {% endfor %}
 					</tr>
 					<tr id="addr1"></tr>
 					{% endfor %}
-				</tbody>
-			</table>
+				  </tbody>
+				</table>
 		</div>
 		</div>
 	</div>
 	
 </div>
+
+<div class="w3-heading-all">
+	<h3 style="font-size:x-large"><strong>Past Appointments</strong></h3>
+  </div>
+<div class="container">
+<div class="row clearfix">
+<div class="col-md-12 column">
+	<div class="table-responsive">
+	<table class="table table-bordered table-hover" id="tab_logic">
+		<thead>
+			<tr>
+				
+				<th class="text-center">
+					Patient's ID
+				</th>
+				<th class="text-center">
+					Appointment Date
+				</th>
+				<th class="text-center">
+					Apppointment Time
+				</th>
+				<th class="text-center">
+					Doctor's Comment
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for row in past_appointments %}
+			<tr id="addr0'">
+			  {% for cell2 in row %}
+			  <td> {{cell2}}</td>
+			  
+			  {% endfor %}
+			</tr>
+			<tr id="addr1"></tr>
+			{% endfor %}
+		  </tbody>
+		</table>
+	  </div>
+	  </div>
+	</div>
 	{% endblock body %}

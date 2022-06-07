@@ -7,7 +7,7 @@
 
 
 {% block body %}
-
+<br>
         <div class="w3-heading-all">
           <h3 style="font-size:x-large"><strong>Your appointment has been successfully booked!</strong></h3>
         </div>
@@ -19,25 +19,35 @@
     <div class="table-responsive">
     <table class="table table-bordered table-hover" id="tab_logic">
         <thead>
-            {% for header in head %}
-				<th> {{ header }}</th>
-					
-					{% endfor %}
-				</tr>
-	  
-				<tr id="addr1"></tr>
+            <tr>
+                <th class="text-center">
+                    Appointment ID
+                </th>	
+                <th class="text-center">
+                    Doctor's Name
+                </th>
+                <th class="text-center">
+                    Appointment Date
+                </th>
+                <th class="text-center">
+                    Apppointment Time
+                </th>
+                
+            </tr>
 		
         </thead>
         <tbody>
-            {% for row in success %}
+            
             <tr id="addr0'">
-                {% for cell in row %}
-                <td> {{cell}}</td>
+               
+                <td> {{appid}}</td>
+                <td> {{dname}}</td>
+                <td> {{appdate}}</td>
+                <td> {{apptime}}</td>
                 
-                {% endfor %}
             </tr>
             <tr id="addr1"></tr>
-            {% endfor %}
+           
         </tbody>
     </table>
 </div>

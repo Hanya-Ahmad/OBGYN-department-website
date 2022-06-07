@@ -1137,6 +1137,14 @@ div#services {
 	-moz-box-shadow: 0px 1px 8px 0px rgba(24, 24, 23, 1.00); 
     box-shadow: 0px 1px 8px 0px rgba(24, 24, 23, 1.00);
 }
+select#doctor,select#date, select#access, select#time{
+    display: inline-block;
+    width: 30%;
+    /* Large margin-right to force the next element to the new-line
+             and margin-left to create a gutter between the label and input */
+    margin: 0 30% 0 4%;
+    
+}
 .agileits_reservation input[type="text"], select#doctor,select#date, select#access, select#time, .email input[type="email"],.age input[type="number"] {
     width: 100%;
     color: #9F9F9F;

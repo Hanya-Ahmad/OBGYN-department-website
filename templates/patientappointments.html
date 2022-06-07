@@ -1,0 +1,48 @@
+{% extends 'patientbase.html' %}
+
+    {% block headerclass %}
+		<div class="banner-header banner2">
+			<div class="banner-dott1">
+				{% endblock headerclass %}
+
+	{% block body %}
+	<div class="container">
+		<div class="row clearfix">
+			<div class="col-md-12 column">
+				<div class="table-responsive">
+				<table class="table table-bordered table-hover" id="tab_logic">
+					<thead>
+						<tr>
+							<th class="text-center">
+								Appointment ID
+							</th>	
+							<th class="text-center">
+								Doctor's Name
+							</th>
+							<th class="text-center">
+								Appointment Date
+							</th>
+							<th class="text-center">
+								Apppointment Time
+							</th>
+							
+						</tr>
+					</thead>
+					<tbody>
+						{% for row in apt%}
+						<tr id="addr0'">
+						  {% for cell in row %}
+						  <td> {{cell}}</td>
+						  
+						  {% endfor %}
+						</tr>
+						<tr id="addr1"></tr>
+						{% endfor %}
+					  </tbody>
+					</table>
+			</div>
+			</div>
+		</div>
+		
+	</div>
+{% endblock body %}

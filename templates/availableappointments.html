@@ -1,5 +1,5 @@
 
- {% extends 'base.html' %}
+ {% extends 'patientbase.html' %}
 
  {% block headerclass %}
  <div class="banner-top">
@@ -8,6 +8,7 @@
 			 {% block nav %}
 			 <li><a href="/">Home</a></li>
 			 <li><a href="/patient/availableappointments">Available Appointments</a></li>
+			 <li><a href="/logout">Log Out</a></li>
 			 {% endblock nav %}
  {% block body %}
 
@@ -83,7 +84,7 @@
 			 <span class="sr-only">Next</span>
 		 </a>
 	 </div> 
-	 <div class="agileits_reservation" style="">
+	 <div class="agileits_reservation" >
 		 <form action="{{ url_for('avaialable_appointments') }}" method="post">
 		 
 			 <div class="clearfix"> </div>
@@ -137,7 +138,8 @@
 	 </div>
 </div>
 <div class="w3-heading-all">
-	<h3 style="font-size:x-large"><strong>Choose from the appointments and fill the form </strong></h3>
+	<br>
+	<h3 style="font-size:x-large"><strong>Choose from the appointments below and fill the form  </strong></h3>
   </div>
   <div class="container">
 	  <div class="row clearfix">

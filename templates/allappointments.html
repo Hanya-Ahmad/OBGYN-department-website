@@ -8,7 +8,7 @@
         {% block body %}
         <br>
         <div class="w3-heading-all">
-          <h3 style="font-size:x-large"><strong>Upcoming Appointments</strong></h3>
+          <h3 style="font-size:x-large"><strong>Available Devices</strong></h3>
         </div>
         <div class="container">
             <div class="row clearfix">
@@ -18,7 +18,7 @@
                 <thead class="table-dark">
                   <tr>
                     
-                    {% for header in head %}
+                    {% for header in available_head %}
                     <th> {{ header }}</th>
 						
 						{% endfor %}

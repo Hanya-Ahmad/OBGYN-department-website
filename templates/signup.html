@@ -1,9 +1,7 @@
 {% extends 'loginbase.html' %}
 
 
-                                {% block nav %}
-                                <li><a href="/login">Log In</a></li>
-                                {% endblock nav %}
+                                
     {% block loginbody %}
     <div class="banner-top" style="transform: translate(0px,-550px); ">
      <div class="agileits_reservation ">
@@ -45,6 +43,8 @@
                                 <input type="submit" value="Sign up" /> 
                                 
                             </div> 
+                            <mark>{{ error_stat }}</mark>
+                                 
                             
                                
                         </form>
