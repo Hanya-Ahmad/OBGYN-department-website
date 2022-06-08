@@ -91,11 +91,15 @@
                 <span class="sr-only">Next</span>
             </a>
         </div> 
+
         <div class="agileits_reservation">
+            <div class="container" style="align-items:center; width:75%">
+                <form action="{{ url_for('dr_inventory_table') }}">
                             <div class="date_btn"> 
-                                <input type="button" onClick="location.href='/patient/availableappointments'" value="Book an Appointment Now!" /> 
+                                <input type="submit" onClick="location.href='/patient/availableappointments'" value="Book an Appointment Now!" /> 
                             </div> 
-                        
+                        </form>
+            </div>
      </div>
         <!-- //slider -->
     <!-- // banner -->

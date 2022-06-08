@@ -74,9 +74,12 @@
 				<span class="sr-only">Next</span>
 			</a>
 		</div> 
+
 		<div class="agileits_reservation" >
-			<form action="{{ url_for('dr_book_dev') }}" method="post">
+			<div class=" container " style="align-items:center; width:600px">
 			
+			<form action="{{ url_for('dr_book_dev') }}" method="post">
+			{% block form%}
 				<div class="clearfix"> </div>
 				<div class="agileits_reservation_grid">
 			   <!-- 	 <div  class="span1_of_1 book_date"> 
@@ -85,60 +88,66 @@
 					</div> -->
 					<div class="span1_of_4 section_room" >
 					   <!-- start_section_room --> 
-					   <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-					   <select id="doctor" name="doctor" class="frm-field sect" required> <!-- id was country /1-->
-						   {% for doctor in doctors %}
+					   <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+					   <select id="device_sn" name="device_sn" class="frm-field sect" required> <!-- id was country /1-->
+						   {% for sn in serial_number %}
 		   
-						   <option value="{{doctor}}">{{ doctor }}</option>
+						   <option value="{{sn}}">{{ sn }}</option>
 						   {% endfor %}
 						   
 					   </select> 
 				   </div> 
 				   <div class="span1_of_2 section_room">
-					   <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+					   <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+					   <select id="device_name" name="device_name" class="frm-field sect" required>
+						   {% for name in dname %}
+		   
+						   <option value="{{name}}">{{ name }}</option>
+						   {% endfor %}
+					   
+					   </select>
+   
+				   </div>
+				   <div class="span1_of_3 section_room">
+					   <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
 					   <select id="date" name="date" class="frm-field sect" required>
-						   {% for date in dates %}
+						   {% for d in date %}
 		   
-						   <option value="{{date}}">{{ date }}</option>
+						   <option value="{{d}}">{{ d }}</option>
 						   {% endfor %}
 					   
 					   </select>
    
 				   </div>
 				   <div class="span1_of_3 section_room">
-					   <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-					   <select id="time" name="time" class="frm-field sect" required>
-						   {% for time in times %}
-		   
-						   <option value="{{time}}">{{ time }}</option>
-						   {% endfor %}
-					   
-					   </select>
-   
-				   </div>
-				   <div class="span1_of_3 section_room">
-					<span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+					<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
 					<select id="time" name="time" class="frm-field sect" required>
-						{% for time in times %}
+						{% for t in time %}
 		
-						<option value="{{time}}">{{ time }}</option>
+						<option value="{{t}}">{{ t }}</option>
 						{% endfor %}
 					
 					</select>
 
 				</div>
-				   <div class="date_btn"> 
-					   <input type="submit" name="booking" value="Book Now" /> 
-					   
-				   </div> 
+				
+				  
 				   
 					<div class="clearfix"></div>
 				</div>
-				
+				<div class="date_btn" style="align-items:center;margin-top:1.8em; width:75%"> 
+					<input type="submit" name="booking" value="Book Now" /> 
+					
+				</div> 
+
+				{% block message %}
+{% endblock message %}	
+				{% endblock form %}
 			</form>
 		</div>
+		</div>
    </div>
-		
+		{% block tableinv %}
 		<div class="w3-heading-all">
 			<h3 style="font-size:x-large"><strong>Choose the device you want</strong></h3>
 		  </div>
@@ -160,7 +169,7 @@
 			  
 				  </thead>
 				<tbody>
-					{% for row in available_a %}
+					{% for row in rows_info %}
 					<tr id="addr0'">
 					  {% for cell in row %}
 					  <td> {{cell}}</td>
@@ -176,6 +185,7 @@
 	</div>
 	
 </div>
+{% endblock tableinv %}
 
 
 	{% endblock body %}

@@ -5,11 +5,7 @@
  <div class="banner-top">
 	<div class="banner-header">
 			 {% endblock headerclass %}
-			 {% block nav %}
-			 <li><a href="/">Home</a></li>
-			 <li><a href="/patient/availableappointments">Available Appointments</a></li>
-			 <li><a href="/logout">Log Out</a></li>
-			 {% endblock nav %}
+			
  {% block body %}
 
  
@@ -89,12 +85,9 @@
 		 
 			 <div class="clearfix"> </div>
 			 <div class="agileits_reservation_grid">
-			<!-- 	 <div  class="span1_of_1 book_date"> 
-					 <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-					 <input class="date"  id="datepicker" name="date" min="2022-10-05" placeholder="Select Date"  type="text" required="">
-				 </div> -->
+			
 				 <div class="span1_of_4 section_room" >
-					<!-- start_section_room --> 
+					
 					<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
 					<select id="doctor" name="doctor" class="frm-field sect" required> <!-- id was country /1-->
 						{% for doctor in doctors %}

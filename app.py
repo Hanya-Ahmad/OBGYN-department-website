@@ -1,6 +1,7 @@
 import mysql.connector 
 from flask import Flask, render_template, url_for, request, session, redirect
 from flask_session import Session
+from datetime import datetime
 
 app = Flask(__name__)
 app.secret_key = 'secret key'
@@ -10,7 +11,7 @@ mydb = mysql.connector.connect(
     host="localhost",
     user="root",
     password="root",
-    database="obgyn2"
+    database="database_project"
 )
 
 mycursor = mydb.cursor(buffered = True)
@@ -97,6 +98,8 @@ def signup():
         role = "patient"
         isInt = True
         is_found=False
+        emailExists=False
+        usernameExists=False
         #database updates
         mycursor.execute('DELETE FROM inventory WHERE  CURRENT_DATE() >= expiry_date')
         mydb.commit()
@@ -109,13 +112,14 @@ def signup():
             
         except ValueError:
             isInt = False
-        if not isInt:
+        if isInt:
             error_statement = 'Your username should contain lettres.'
             return render_template("signup.html",error_stat = error_statement)
         elif not is_found:
             error_statement= "Please enter a valid e-mail in the format of abcdef@ghij.klm"
             return render_template("signup.html", error_stat= error_statement)
-        elif phone_number.isnumeric()==False or len(phone_number)!=11:
+        
+        elif phone_number.isnumeric()==False or len(phone_number)!=11: #or str(phone_number)[:2] != "01":
             error_statement = "Pleae enter a valid phone number in the format of 01XXXXXXXXX"
             return render_template("signup.html", error_stat=error_statement)
         elif age.isnumeric() == False:
@@ -126,15 +130,15 @@ def signup():
             return render_template("signup.html", error_stat=error_statement)
         elif len(password) < 8 :
             error_statement = 'Your password must contain at least 8 characters'
-            return render_template('signup.html', error=error_statement, user_name=username, pass_word=password)
+            return render_template('signup.html', error_stat=error_statement, user_name=username, pass_word=password)
         else:   
             mycursor.execute(
-                'SELECT * FROM  WHERE username =%s AND access=%s', (username,role))
+                'SELECT * FROM user WHERE username =%s AND access=%s', (username,role))
             account = mycursor.fetchone()
             if account:
                 usernameExists=True
             mycursor.execute(
-                'SELECT (patient.patient_id, doctor.doctor_id) FROM patient FULL OUTER JOIN doctor ON patient.patient_email_address = doctor.doctor_email_address')
+                'SELECT patient_email_address FROM patient WHERE patient_email_address=%s',(e_mail,))
             account = mycursor.fetchone()
             if account:
                 emailExists=True
@@ -143,7 +147,6 @@ def signup():
                 return render_template("signup.html", error_stat=error_statement)
 
             else:
-                #error_statement='no_error'
                 if role == "patient":
                     mycursor.execute(
                         'INSERT INTO user (pass,username,access) VALUES( %s, %s,%s)', 
@@ -160,9 +163,7 @@ def signup():
                     return render_template('indexpatient.html', user_name=username, pass_word=password)
 
         return render_template('signup.html')
-       # else:
-        #if error_statement =='no_error':  
-          # return render_template('signup.html', user_name=username, passwordd=password)
+
 
 @app.route('/login', methods=["GET", "POST"])
 def signin():
@@ -185,6 +186,7 @@ def signin():
                 if account :
                         mycursor.execute('SELECT userid from user WHERE username=%s AND pass =%s',(username,password,))
                         result = mycursor.fetchone()
+            
                         session["id"]=result
                         mycursor.execute('SELECT access from user WHERE username=%s AND pass =%s',(username,password,))
                         result =mycursor.fetchone()
@@ -214,21 +216,18 @@ def logout():
 
 @app.route('/doctor/myappointments',methods=['GET','POST'])
 def my_appointments():
-    if session['role'] != "doctor":
-        route = "/index" + session['role'] + "/"
-        return redirect(route)
-    else:    
-        mycursor.execute('SELECT patient_id, booked_appointment_time, booked_appointment_date, doctor_comment FROM booked_appointments WHERE doctor_id = %d AND , past_or_upcoming = "past"',session["id"])
+    if session["role"]== "patient":
+        return render_template('indexpatient')
+    elif session['role']=='admin':
+        return render_template('indexadmin.html')
+    elif session["role"]== "doctor":    
+        doctor_id=session['id']
+        mycursor.execute('SELECT patient_id, booked_appointment_time, booked_appointment_date, doctor_comment FROM booked_appointment WHERE doctor_id = %s AND past_or_upcoming = "past"',(doctor_id[0],))
         past=tuple(mycursor.fetchall())
-        mycursor.execute('SELECT patient_id, booked_appointment_time, booked_appointment_date, doctor_comment FROM booked_appointments WHERE doctor_id = %d AND , past_or_upcoming = "upcoming"',session['id'])
+        mycursor.execute('SELECT patient_id, booked_appointment_time, booked_appointment_date, doctor_comment FROM booked_appointment WHERE doctor_id = %s AND past_or_upcoming = "upcoming"',(doctor_id[0],))
         upcoming=tuple(mycursor.fetchall())
         return render_template("myappointments.html", past_appointments=past, upcoming_appointments=upcoming)
-
-
-
-
-
-
+    return redirect('/')
 
 @app.route('/admin/doctorsappointment', methods=['GET','POST'])
 def admin_doctors_appointments():
@@ -238,7 +237,7 @@ def admin_doctors_appointments():
           return render_template('indexpatient.html')
       elif session['role']=='doctor':
           return render_template('indexdoctor.html')
-      elif session['role'] != "admin": 
+      elif session['role'] == "admin": 
         mycursor.execute('SELECT patient_id, doctor_id, booked_appointment_date, booked_appointment_time, doctor_comment FROM booked_appointment WHERE past_or_upcoming = "past"')
         past=tuple(mycursor.fetchall())
         mycursor.execute('SELECT patient_id, doctor_id, booked_appointment_date, booked_appointment_time, doctor_comment FROM booked_appointment WHERE past_or_upcoming = "upcoming"')
@@ -280,12 +279,13 @@ def avaialable_appointments():
         return render_template("indexadmin.html")
     return redirect('/')
     
-@app.route('/patient/myappointments')
+@app.route('/patient/myappointments', methods=['GET','PUSH'])
 def show_my_appointments():
     if session['role']== "patient":
-        mycursor.execute('SELECT FROM booked_appointment WHERE patient_id= %s AND past_or_upcoming="past"',session['id'])
-        apt=mycursor.fetchone()
-        return render_template("patientappointments.html",apt=apt)
+        mycursor.execute('SELECT booked_appointment_id, doctor_name, booked_appointment_date, booked_appointment_time, doctor_comment FROM doctor INNER JOIN booked_appointment USING (doctor_id) WHERE patient_id= %s',((session['id'])[0],))
+        my_apps= tuple(mycursor.fetchall())    
+        header=("Appointment ID", "Doctor", "Appointment Date", "Appointment Time", "Doctor's Comment(s)")
+        return render_template('patientappointments.html', appointments=my_apps, head=header)
         
     elif session['role']=='doctor':
         return render_template("indexdoctor.html")
@@ -328,12 +328,37 @@ def dr_inventory_table():
     elif session['role']=='admin':
         return render_template('indexadmin.html')
     elif session["role"]== "doctor":
+        mycursor.execute('SELECT device_sn FROM inventory WHERE device_state="available"')
+        devices_sns= mycursor.fetchall()
+        device_sn=[]
+        for sn in devices_sns:
+            device_sn.append(sn[0])
+        device_sn=tuple(device_sn)
+        mycursor.execute('SELECT device_name FROM inventory WHERE device_state="available"')
+        devices_names=mycursor.fetchall()
+        device_name=[]
+        for name in devices_names:
+            device_name.append(name[0])
+        device_name=tuple(device_name)
+        mycursor.execute('SELECT booking_date FROM inventory WHERE device_state="available"')
+        booking_dates= mycursor.fetchall()
+        booking_date=[]
+        for bdate in booking_dates:
+            booking_date.append(bdate[0])
+        booking_date=tuple(booking_date)
+        mycursor.execute('SELECT booking_hour FROM inventory WHERE device_state="available"')
+        bhours= mycursor.fetchall()
+        booking_hour=[]
+        for bhour in bhours:
+            booking_hour.append(bhour[0])
+        booking_hour=tuple(booking_hour)
         mycursor.execute('SELECT device_sn, device_name, booking_date, booking_hour FROM inventory WHERE device_state="available"')
-        avlbl= tuple(mycursor.fetchall())
+        all_data= tuple(mycursor.fetchall())
         header=("Device SN", "Device Type", "Available Date", "Booking Hour")
-        return render_template("doctorinventory.html",rows=avlbl, head=header)
+        return render_template("doctorinventory.html",rows_info=all_data, head=header, time=booking_hour, date=booking_date, dname=device_name, serial_number=device_sn)
     return redirect('/')
-   
+
+
     
 @app.route('/doctor/inventory',methods=['GET','POST'])
 def dr_book_dev():
@@ -349,10 +374,18 @@ def dr_book_dev():
             booking_time=request.form['time']
             doctor_id=session['id']
             values=(doctor_id[0],sn,dev_name,booking_date,booking_time,)
-            mycursor.execute('UPDATE inventory (device_state="not available", doctor_id=%s) WHEN device_sn=%s AND device_name=%s AND booking_date=%s AND booking_hour=%s,',values)
-            mydb.commit()
-            message='Booking completed successfully.'
-            return render_template("doctorinventory.html",message=message)
+            mycursor.execute('SELECT* FROM inventory WHERE device_sn=%s AND device_name=%s AND booking_date=%s AND booking_hour=%s AND device_state="available"',(sn,dev_name,booking_date,booking_time,))
+            success=mycursor.fetchall()
+            if success:
+                mycursor.execute('UPDATE inventory SET doctor_id=%s WHERE device_sn=%s AND device_name=%s AND booking_date=%s AND booking_hour=%s',values)
+                mydb.commit()
+                mycursor.execute('UPDATE inventory SET device_state="not available" WHERE device_sn=%s AND device_name=%s AND booking_date=%s AND booking_hour=%s',(sn,dev_name,booking_date,booking_time,))
+                mydb.commit()
+                message='Booking completed successfully.You booked {} (SN: {}). You will be able to use the {} at {}, {}'.format(
+                    dev_name,sn,dev_name,booking_date,booking_time)
+            else:
+                message='Please recheck the information table and choose existing values.'
+            return render_template("inventorybooking.html",message=message)
     return redirect(url_for('dr_inventory_table'))
             
 @app.route('/admin/inventory',methods=['GET','PUSH'])

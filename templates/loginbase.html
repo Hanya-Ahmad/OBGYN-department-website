@@ -20,7 +20,11 @@
                 </div>
         </div>
                 {% endblock headerclass %}
-                
+                {% block title %}
+                <div class="w3_navigation_pos " style="position:fixed; top:2.5%;left:40%"  >
+                   
+                    <h1 style="text-align:center"><a href="/">OBGYN</a></h1>
+                    {% endblock title %}
                 {% block nav %}
                 <li><a href="http://127.0.0.1:5000/login">Log In</a></li>
                 
