@@ -324,7 +324,7 @@ def patient_booking():
 @app.route("/doctor/inventory")
 def dr_inventory_table():
     if session["role"]== "patient":
-        return render_template('indexpatient')
+        return render_template('indexpatient.html')
     elif session['role']=='admin':
         return render_template('indexadmin.html')
     elif session["role"]== "doctor":
